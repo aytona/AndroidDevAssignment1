@@ -5,5 +5,6 @@ package com.chrisaytona;
  */
 public interface Organism
 {
-
+    void move();
+    void breed();
 }
