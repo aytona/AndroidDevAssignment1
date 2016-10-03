@@ -9,6 +9,7 @@ public class Grid
     private int height;
     private int size;
     private int[] grid;
+    private int[] foreignGrid;
 
     public Grid(int width, int height)
     {
@@ -16,6 +17,7 @@ public class Grid
         this.height = height;
         this.size = width * height;
         this.grid = new int[this.size];
+        this.foreignGrid = new int[this.size];      // Get this from a different class
     }
 
     public void InitGrid()
@@ -57,4 +59,12 @@ public class Grid
     {
 
     }
+
+   private int[] UpdateGrid(int[] prevGrid)
+   {
+       int[] updatedGrid = new int[this.size];
+
+
+       return updatedGrid;
+   }
 }
