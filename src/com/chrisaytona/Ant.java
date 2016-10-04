@@ -28,7 +28,7 @@ public class Ant extends Organism
     {
         ArrayList<Integer> directions = new ArrayList<Integer>(4);
 
-        if (this.index - 1 > 0)
+        if (this.index - 1 >= 0)
         {
             directions.add(this.index - 1);
         }
@@ -36,7 +36,7 @@ public class Ant extends Organism
         {
             directions.add(this.index + 1);
         }
-        if (this.index - width > 0)
+        if (this.index - width >= 0)
         {
             directions.add(this.index - width);
         }
@@ -50,13 +50,11 @@ public class Ant extends Organism
         {
             Random rand = new Random();
             int randDir = rand.nextInt(directions.size());
-            if(directions.get(randDir) < grid.length - 1 &&
-                    directions.get(randDir) >= 0 &&
-                    grid[directions.get(randDir)].GetName().equals(""))
+            int newIndex = directions.get(randDir);
+            if(grid[newIndex].GetName().equals(""))
             {
-
                 grid[this.index] = new Organism();
-                grid[directions.get(randDir)] = new Ant(directions.get(randDir), this.currentStepLife + 1);
+                grid[newIndex] = new Ant(newIndex, this.currentStepLife + 1);
                 break;
             }
             directions.remove(randDir);
@@ -67,7 +65,7 @@ public class Ant extends Organism
     {
         ArrayList<Integer> directions = new ArrayList<Integer>(4);
 
-        if (this.index - 1 > 0)
+        if (this.index - 1 >= 0)
         {
             directions.add(this.index - 1);
         }
@@ -75,7 +73,7 @@ public class Ant extends Organism
         {
             directions.add(this.index + 1);
         }
-        if (this.index - width > 0)
+        if (this.index - width >= 0)
         {
             directions.add(this.index - width);
         }
@@ -89,11 +87,10 @@ public class Ant extends Organism
         {
             Random rand = new Random();
             int randDir = rand.nextInt(directions.size());
-            if(directions.get(randDir) < grid.length - 1 &&
-                    directions.get(randDir) >= 0 &&
-                    grid[directions.get(randDir)].GetName().equals(""))
+            int newIndex = directions.get(randDir);
+            if(grid[newIndex].GetName().equals(""))
             {
-                grid[directions.get(randDir)] = new Ant(directions.get(randDir));
+                grid[newIndex] = new Ant(newIndex);
                 this.currentStepLife = 0;
                 return;
             }

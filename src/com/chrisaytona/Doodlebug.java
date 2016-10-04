@@ -37,7 +37,7 @@ public class Doodlebug extends Organism
     {
         ArrayList<Integer> directions = new ArrayList<Integer>(4);
 
-        if (this.index - 1 > 0)
+        if (this.index - 1 >= 0)
         {
             directions.add(this.index - 1);
         }
@@ -45,7 +45,7 @@ public class Doodlebug extends Organism
         {
             directions.add(this.index + 1);
         }
-        if (this.index - width > 0)
+        if (this.index - width >= 0)
         {
             directions.add(this.index - width);
         }
@@ -57,13 +57,11 @@ public class Doodlebug extends Organism
         int dirSize = directions.size();
         for(int i = 0; i < dirSize; i++)
         {
-            if(directions.get(i) >= 0 &&
-                    directions.get(i) < grid.length - 1 &&
-                    grid[directions.get(i)].GetName().equals("Ant"))
+            int newIndex = directions.get(i);
+            if(grid[newIndex].GetName().equals("Ant"))
             {
-
                 grid[this.index] = new Organism();
-                grid[directions.get(i)] = new Doodlebug(directions.get(i), this.currentStepLife + 1, 0);
+                grid[newIndex] = new Doodlebug(newIndex, this.currentStepLife + 1, 0);
                 return;
             }
         }
@@ -71,13 +69,12 @@ public class Doodlebug extends Organism
         {
             Random rand = new Random();
             int randDir = rand.nextInt(directions.size());
-            if(directions.get(randDir) < grid.length - 1 &&
-                    directions.get(randDir) >= 0 &&
-                    grid[directions.get(randDir)].GetName().equals(""))
+            int newIndex = directions.get(randDir);
+            if(grid[newIndex].GetName().equals(""))
             {
                 grid[this.index] = new Organism();
-                grid[directions.get(randDir)] = new Doodlebug(directions.get(randDir), this.currentStepLife + 1, this.currentStarveLife + 1);
-                break;
+                grid[newIndex] = new Doodlebug(newIndex, this.currentStepLife + 1, this.currentStarveLife + 1);
+                return;
             }
             directions.remove(randDir);
         }
@@ -88,7 +85,7 @@ public class Doodlebug extends Organism
     {
         ArrayList<Integer> directions = new ArrayList<Integer>(4);
 
-        if (this.index - 1 > 0)
+        if (this.index - 1 >= 0)
         {
             directions.add(this.index - 1);
         }
@@ -96,7 +93,7 @@ public class Doodlebug extends Organism
         {
             directions.add(this.index + 1);
         }
-        if (this.index - width > 0)
+        if (this.index - width >= 0)
         {
             directions.add(this.index - width);
         }
@@ -110,12 +107,12 @@ public class Doodlebug extends Organism
         {
             Random rand = new Random();
             int randDir = rand.nextInt(directions.size());
-            if(directions.get(randDir) < grid.length - 1 &&
-                    directions.get(randDir) >= 0)
+            int newIndex = directions.get(randDir);
+            if(grid[newIndex].GetName().equals("") || grid[newIndex].GetName().equals("Ant"))
             {
-                grid[directions.get(randDir)] = new Doodlebug(directions.get(randDir));
+                grid[newIndex] = new Doodlebug(newIndex);
                 this.currentStepLife = 0;
-                break;
+                return;
             }
             directions.remove(randDir);
         }
