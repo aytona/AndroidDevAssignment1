@@ -1,5 +1,6 @@
 package com.chrisaytona;
 
+
 public class Organism
 {
     private String name;
@@ -11,12 +12,12 @@ public class Organism
         this.currentLifeStep = 0;
     }
 
-    public void move()
+    private void move(Organism[] grid, int width)
     {
 
     }
 
-    public void breed()
+    private void breed()
     {
 
     }
@@ -24,5 +25,15 @@ public class Organism
     public String GetName()
     {
         return this.name;
+    }
+
+    public void simStep(Organism[] grid, int width)
+    {
+
+    }
+
+    public void SetName(String name)
+    {
+        this.name = name;
     }
 }

@@ -14,54 +14,50 @@ public class Grid
         this.height = height;
         this.size = width * height;
         this.grid = new Organism[this.size];
+        for (int i = 0; i < size; i++)
+        {
+            grid[i] = new Organism();
+        }
     }
 
-    // Init with 5 doodlebugs and 100 ants
     public void InitGrid(int antAmount, int doodleBugAmount)
     {
-        int randPos;
         while(antAmount > 0)
         {
-            while(true)
+            Random rand = new Random();
+            int randPos = rand.nextInt(this.size);
+            if(this.grid[randPos].GetName().equals(""))
             {
-                Random rand = new Random();
-                randPos = rand.nextInt(this.size);
-                if(this.grid[randPos].GetName() != "Ant" || this.grid[randPos].GetName() != "Doodlebug")
-                {
-                    break;
-                }
+                this.grid[randPos] = new Ant(randPos);
+                --antAmount;
             }
-            this.grid[randPos] = new Ant(randPos);
         }
 
         while(doodleBugAmount > 0)
         {
-            while(true)
+            Random rand = new Random();
+            int randPos = rand.nextInt(this.size);
+            if (this.grid[randPos].GetName().equals(""))
             {
-                Random rand = new Random();
-                randPos = rand.nextInt(this.size);
-                if(this.grid[randPos].GetName() == "")
-                {
-                    break;
-                }
+                this.grid[randPos] = new Doodlebug(randPos);
+                --doodleBugAmount;
             }
-            this.grid[randPos] = new Doodlebug(randPos);
         }
+        printGrid();
     }
 
-    public String printGrid()
+    public void printGrid()
     {
         String gridString = "";
-
         for(int i = 0; i < this.width; i++)
         {
             for (int j = 0; j < this.height; j++)
             {
-                if(grid[i].GetName() == "Doodlebug")
+                if(grid[(this.width * j) + i].GetName().equals("Doodlebug"))
                 {
                     gridString += "x ";
                 }
-                else if(grid[i].GetName() == "Ant")
+                else if(grid[(this.width * j) + i].GetName().equals("Ant"))
                 {
                     gridString += "o ";
                 }
@@ -70,19 +66,28 @@ public class Grid
                     gridString += "- ";
                 }
             }
-            gridString += "\r\n";
+            gridString += "\n";
         }
-
-        return gridString;
+        System.out.print(gridString);
     }
 
-    // Prompt user to press enter to go to the next step
     public void SimStep()
     {
-
+        for(int index = 0; index < this.size; index++)
+        {
+            if (grid[index].GetName().equals("Doodlebug"))
+            {
+                grid[index].simStep(this.grid, this.width);
+            }
+        }
+        for(int index = 0; index < this.size; index++)
+        {
+            if(grid[index].GetName().equals("Ant"))
+            {
+                grid[index].simStep(this.grid, this.width);
+            }
+        }
 
         printGrid();
     }
-
-
 }
