@@ -1,17 +1,24 @@
 package com.chrisaytona;
 
-/**
- * Created by Christopher on 2016-09-25.
- */
-public class Ant implements Organism
+// One ant
+public class Ant extends Organism
 {
     private int xPos;
     private int yPos;
+    private int currentStepLife;
+    private int stepsToBreed = 3;
+    private String name = "Ant";
+
     public Ant() {}
 
     public Ant(int xPos,int yPos)
     {
+        this.currentStepLife = 0;
+    }
 
+    public Ant(int index)
+    {
+        this.currentStepLife = 0;
     }
 
     public int GetXPos()
@@ -24,13 +31,19 @@ public class Ant implements Organism
         return this.yPos;
     }
 
-    @Override
+    public String GetName()
+    {
+        return this.name;
+    }
+
     public void move()
     {
 
+        currentStepLife++;
+        if(currentStepLife >= this.stepsToBreed)
+            breed();
     }
 
-    @Override
     public void breed()
     {
 

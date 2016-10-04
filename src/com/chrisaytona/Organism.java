@@ -1,10 +1,28 @@
 package com.chrisaytona;
 
-/**
- * Created by Christopher on 2016-09-25.
- */
-public interface Organism
+public class Organism
 {
-    void move();
-    void breed();
+    private String name;
+    private int currentLifeStep;
+
+    public Organism()
+    {
+        this.name = "";
+        this.currentLifeStep = 0;
+    }
+
+    public void move()
+    {
+
+    }
+
+    public void breed()
+    {
+
+    }
+
+    public String GetName()
+    {
+        return this.name;
+    }
 }

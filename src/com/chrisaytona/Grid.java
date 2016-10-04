@@ -1,30 +1,51 @@
 package com.chrisaytona;
+import java.util.Random;
 
-/**
- * Created by Christopher on 2016-10-02.
- */
 public class Grid
 {
     private int width;
     private int height;
     private int size;
-    private int[] grid;
-    private int[] foreignGrid;
+    private Organism[] grid;
 
     public Grid(int width, int height)
     {
         this.width = width;
         this.height = height;
         this.size = width * height;
-        this.grid = new int[this.size];
-        this.foreignGrid = new int[this.size];      // Get this from a different class
+        this.grid = new Organism[this.size];
     }
 
-    public void InitGrid()
+    // Init with 5 doodlebugs and 100 ants
+    public void InitGrid(int antAmount, int doodleBugAmount)
     {
-        for(int i = 0; i < this.size; i++)
+        int randPos;
+        while(antAmount > 0)
         {
-            this.grid[i] = 0;
+            while(true)
+            {
+                Random rand = new Random();
+                randPos = rand.nextInt(this.size);
+                if(this.grid[randPos].GetName() != "Ant" || this.grid[randPos].GetName() != "Doodlebug")
+                {
+                    break;
+                }
+            }
+            this.grid[randPos] = new Ant(randPos);
+        }
+
+        while(doodleBugAmount > 0)
+        {
+            while(true)
+            {
+                Random rand = new Random();
+                randPos = rand.nextInt(this.size);
+                if(this.grid[randPos].GetName() == "")
+                {
+                    break;
+                }
+            }
+            this.grid[randPos] = new Doodlebug(randPos);
         }
     }
 
@@ -36,11 +57,11 @@ public class Grid
         {
             for (int j = 0; j < this.height; j++)
             {
-                if(grid[i] == 2)
+                if(grid[i].GetName() == "Doodlebug")
                 {
                     gridString += "x ";
                 }
-                else if(grid[i] == 1)
+                else if(grid[i].GetName() == "Ant")
                 {
                     gridString += "o ";
                 }
@@ -55,16 +76,13 @@ public class Grid
         return gridString;
     }
 
+    // Prompt user to press enter to go to the next step
     public void SimStep()
     {
 
+
+        printGrid();
     }
 
-   private int[] UpdateGrid(int[] prevGrid)
-   {
-       int[] updatedGrid = new int[this.size];
 
-
-       return updatedGrid;
-   }
 }
