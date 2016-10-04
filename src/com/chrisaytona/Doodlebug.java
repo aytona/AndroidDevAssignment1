@@ -37,12 +37,25 @@ public class Doodlebug extends Organism
     {
         ArrayList<Integer> directions = new ArrayList<Integer>(4);
 
-        directions.add(this.index - 1);
-        directions.add(this.index + 1);
-        directions.add(this.index - width);
-        directions.add(this.index + width);
+        if (this.index - 1 > 0)
+        {
+            directions.add(this.index - 1);
+        }
+        if (this.index + 1 < grid.length)
+        {
+            directions.add(this.index + 1);
+        }
+        if (this.index - width > 0)
+        {
+            directions.add(this.index - width);
+        }
+        if (this.index + width < grid.length)
+        {
+            directions.add(this.index + width);
+        }
 
-        for(int i = 0; i < 4; i++)
+        int dirSize = directions.size();
+        for(int i = 0; i < dirSize; i++)
         {
             if(directions.get(i) >= 0 &&
                     directions.get(i) < grid.length - 1 &&
@@ -54,7 +67,7 @@ public class Doodlebug extends Organism
                 return;
             }
         }
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < dirSize; i++)
         {
             Random rand = new Random();
             int randDir = rand.nextInt(directions.size());
@@ -75,12 +88,25 @@ public class Doodlebug extends Organism
     {
         ArrayList<Integer> directions = new ArrayList<Integer>(4);
 
-        directions.add(this.index - 1);
-        directions.add(this.index + 1);
-        directions.add(this.index - width);
-        directions.add(this.index + width);
+        if (this.index - 1 > 0)
+        {
+            directions.add(this.index - 1);
+        }
+        if (this.index + 1 < grid.length)
+        {
+            directions.add(this.index + 1);
+        }
+        if (this.index - width > 0)
+        {
+            directions.add(this.index - width);
+        }
+        if (this.index + width < grid.length)
+        {
+            directions.add(this.index + width);
+        }
 
-        for (int i = 0; i < 4; i++)
+        int dirSize = directions.size();
+        for (int i = 0; i < dirSize; i++)
         {
             Random rand = new Random();
             int randDir = rand.nextInt(directions.size());
@@ -102,14 +128,15 @@ public class Doodlebug extends Organism
 
     public void simStep(Organism[] grid, int width)
     {
-        this.move(grid, width);
+        if (this.currentStarveLife >= this.stepsToStarve)
+        {
+            this.starve(grid);
+            return;
+        }
         if (this.currentStepLife == this.stepsToBreed)
         {
             this.breed(grid, width);
         }
-        if (this.currentStarveLife == this.stepsToStarve)
-        {
-            this.starve(grid);
-        }
+        this.move(grid, width);
     }
 }

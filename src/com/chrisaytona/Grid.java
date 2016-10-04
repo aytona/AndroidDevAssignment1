@@ -53,11 +53,11 @@ public class Grid
         {
             for (int j = 0; j < this.height; j++)
             {
-                if(grid[(this.width * j) + i].GetName().equals("Doodlebug"))
+                if(grid[(this.width * i) + j].GetName().equals("Doodlebug"))
                 {
                     gridString += "x ";
                 }
-                else if(grid[(this.width * j) + i].GetName().equals("Ant"))
+                else if(grid[(this.width * i) + j].GetName().equals("Ant"))
                 {
                     gridString += "o ";
                 }

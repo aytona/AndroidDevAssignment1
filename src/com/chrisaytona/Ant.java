@@ -28,12 +28,25 @@ public class Ant extends Organism
     {
         ArrayList<Integer> directions = new ArrayList<Integer>(4);
 
-        directions.add(this.index - 1);
-        directions.add(this.index + 1);
-        directions.add(this.index - width);
-        directions.add(this.index + width);
+        if (this.index - 1 > 0)
+        {
+            directions.add(this.index - 1);
+        }
+        if (this.index + 1 < grid.length)
+        {
+            directions.add(this.index + 1);
+        }
+        if (this.index - width > 0)
+        {
+            directions.add(this.index - width);
+        }
+        if (this.index + width < grid.length)
+        {
+            directions.add(this.index + width);
+        }
 
-        for (int i = 0; i < 4; i++)
+        int dirSize = directions.size();
+        for (int i = 0; i < dirSize; i++)
         {
             Random rand = new Random();
             int randDir = rand.nextInt(directions.size());
@@ -54,12 +67,25 @@ public class Ant extends Organism
     {
         ArrayList<Integer> directions = new ArrayList<Integer>(4);
 
-        directions.add(this.index - 1);
-        directions.add(this.index + 1);
-        directions.add(this.index - width);
-        directions.add(this.index + width);
+        if (this.index - 1 > 0)
+        {
+            directions.add(this.index - 1);
+        }
+        if (this.index + 1 < grid.length)
+        {
+            directions.add(this.index + 1);
+        }
+        if (this.index - width > 0)
+        {
+            directions.add(this.index - width);
+        }
+        if (this.index + width < grid.length)
+        {
+            directions.add(this.index + width);
+        }
 
-        for (int i = 0; i < 4; i++)
+        int dirSize = directions.size();
+        for (int i = 0; i < dirSize; i++)
         {
             Random rand = new Random();
             int randDir = rand.nextInt(directions.size());
