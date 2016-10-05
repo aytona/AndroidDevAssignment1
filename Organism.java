@@ -26,11 +26,16 @@ public class Organism
 
     public void simStep(Organism[] grid, int width)
     {
-
+         this.endTurn = true;
     }
     
     public void ToggleTurn()
     {
-        this.endTurn = !this.endTurn;
+        this.endTurn = false;
+    }
+
+    public boolean GetTurn()
+    {
+        return this.endTurn;
     }
 }
