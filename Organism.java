@@ -31,6 +31,6 @@ public class Organism
     
     public void ToggleTurn()
     {
-        endTurn = !endTurn;
+        this.endTurn = !this.endTurn;
     }
 }
