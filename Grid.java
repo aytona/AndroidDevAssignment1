@@ -1,5 +1,3 @@
-package com.chrisaytona;
-
 import java.util.Random;
 
 public class Grid

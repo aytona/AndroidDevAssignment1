@@ -1,5 +1,3 @@
-package com.chrisaytona;
-
 public class Organism
 {
     private String name;

@@ -1,5 +1,3 @@
-package com.chrisaytona;
-
 import java.util.Random;
 import java.util.ArrayList;
 
@@ -53,7 +51,7 @@ public class Ant extends Organism
             {
                 grid[this.index] = new Organism();
                 grid[newIndex] = new Ant(newIndex, this.currentStepLife + 1);
-                break;
+                return;
             }
             directions.remove(randDir);
         }
