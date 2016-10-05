@@ -72,16 +72,22 @@ public class Grid
 
     public void SimStep()
     {
+        for(int i = 0; i < this.size; i++)
+        {
+            grid[i].ToggleTurn();
+        }
         for(int index = 0; index < this.size; index++)
         {
-            if (grid[index].GetName().equals("Doodlebug"))
+            if (grid[index].GetName().equals("Doodlebug") &&
+                    !grid[index].GetTurn())
             {
                 grid[index].simStep(this.grid, this.width);
             }
         }
         for(int index = 0; index < this.size; index++)
         {
-            if(grid[index].GetName().equals("Ant"))
+            if(grid[index].GetName().equals("Ant") &&
+                    !grid[index].GetTurn())
             {
                 grid[index].simStep(this.grid, this.width);
             }
