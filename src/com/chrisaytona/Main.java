@@ -1,4 +1,5 @@
 package com.chrisaytona;
+
 import java.util.Scanner;
 
 public class Main {

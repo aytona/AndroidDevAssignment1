@@ -10,8 +10,6 @@ public class Ant extends Organism
     private int stepsToBreed = 3;
     private String name = "Ant";
 
-    public Ant() {}
-
     public Ant(int index)
     {
         this.currentStepLife = 0;

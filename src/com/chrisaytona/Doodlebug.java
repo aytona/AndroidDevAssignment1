@@ -12,8 +12,6 @@ public class Doodlebug extends Organism
     private int stepsToStarve = 3;
     private String name = "Doodlebug";
 
-    public Doodlebug() {}
-
     public Doodlebug(int index)
     {
         this.currentStepLife = 0;
