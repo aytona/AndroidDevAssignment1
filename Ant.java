@@ -25,7 +25,12 @@ public class Ant extends Organism
 
     public void ToggleTurn()
     {
-        this.endTurn = !this.endTurn
+        this.endTurn = false;
+    }
+
+    public boolean GetTurn()
+    {
+        return this.endTurn;
     }
 
     private void move(Organism[] grid, int width)
