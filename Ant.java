@@ -74,11 +74,11 @@ public class Ant extends Organism
     {
         ArrayList<Integer> directions = new ArrayList<Integer>(4);
 
-        if (this.index - 1 >= 0)
+        if (this.index % width != 0 && this.index - 1 >= 0)
         {
             directions.add(this.index - 1);
         }
-        if (this.index + 1 < grid.length)
+        if (this.width + 1 % width != 0 && this.index + 1 < grid.length)
         {
             directions.add(this.index + 1);
         }
