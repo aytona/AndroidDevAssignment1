@@ -50,7 +50,7 @@ public class Doodlebug extends Organism
         {
             directions.add(this.index - 1);
         }
-        if (this.width + 1 % width != 0 && this.index + 1 < grid.length)
+        if (this.index + 1 % width != 0 && this.index + 1 < grid.length)
         {
             directions.add(this.index + 1);
         }
@@ -98,7 +98,7 @@ public class Doodlebug extends Organism
         {
             directions.add(this.index - 1);
         }
-        if (this.width + 1 % width != 0 && this.index + 1 < grid.length)
+        if (this.index + 1 % width != 0 && this.index + 1 < grid.length)
         {
             directions.add(this.index + 1);
         }
