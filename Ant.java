@@ -114,5 +114,6 @@ public class Ant extends Organism
         {
             this.breed(grid, width);
         }
+        this.endTurn = true;
     }
 }
