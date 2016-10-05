@@ -139,5 +139,6 @@ public class Doodlebug extends Organism
             this.breed(grid, width);
         }
         this.move(grid, width);
+        this.endTurn = true;
     }
 }
