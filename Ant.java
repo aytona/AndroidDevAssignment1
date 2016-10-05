@@ -7,17 +7,25 @@ public class Ant extends Organism
     private int currentStepLife;
     private int stepsToBreed = 3;
     private String name = "Ant";
+    private boolean endTurn;
 
     public Ant(int index)
     {
         this.currentStepLife = 0;
         this.index = index;
+        this.endTurn = true;
     }
 
     public Ant(int index, int currentStepLife)
     {
         this.currentStepLife = currentStepLife;
         this.index = index;
+        this.endTurn = true;
+    }
+
+    public void ToggleTurn()
+    {
+        this.endTurn = !this.endTurn
     }
 
     private void move(Organism[] grid, int width)
