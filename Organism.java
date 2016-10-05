@@ -1,10 +1,12 @@
 public class Organism
 {
     private String name;
+    private boolean endTurn;
 
     public Organism()
     {
         this.name = "";
+        this.endTurn = true;
     }
 
     private void move(Organism[] grid, int width)
@@ -25,5 +27,10 @@ public class Organism
     public void simStep(Organism[] grid, int width)
     {
 
+    }
+    
+    public void ToggleTurn()
+    {
+        endTurn = !endTurn;
     }
 }
