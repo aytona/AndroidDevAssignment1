@@ -9,12 +9,14 @@ public class Doodlebug extends Organism
     private int stepsToBreed = 8;
     private int stepsToStarve = 3;
     private String name = "Doodlebug";
+    private boolean endTurn;
 
     public Doodlebug(int index)
     {
         this.currentStepLife = 0;
         this.currentStarveLife = 0;
         this.index = index;
+        this.endTurn = true;
     }
 
     public Doodlebug(int index, int currentStepLife, int currentStarveLife)
@@ -22,6 +24,12 @@ public class Doodlebug extends Organism
         this.index = index;
         this.currentStepLife = currentStepLife;
         this.currentStarveLife = currentStarveLife;
+        this.endTurn = true;
+    }
+
+    public void ToggleTurn()
+    {
+        this.endTurn = !this.endTurn;
     }
 
     public String GetName()
