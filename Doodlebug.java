@@ -29,7 +29,12 @@ public class Doodlebug extends Organism
 
     public void ToggleTurn()
     {
-        this.endTurn = !this.endTurn;
+        this.endTurn = false;
+    }
+
+    public boolean GetTurn()
+    {
+        return this.endTurn;
     }
 
     public String GetName()
