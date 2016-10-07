@@ -1,3 +1,5 @@
+package com.chrisaytona;
+
 import java.util.Random;
 
 public class Grid
@@ -13,10 +15,6 @@ public class Grid
         this.height = height;
         this.size = width * height;
         this.grid = new Organism[this.size];
-        for (int i = 0; i < size; i++)
-        {
-            grid[i] = new Organism();
-        }
     }
 
     public void InitGrid(int antAmount, int doodleBugAmount)
@@ -25,7 +23,7 @@ public class Grid
         {
             Random rand = new Random();
             int randPos = rand.nextInt(this.size);
-            if(this.grid[randPos].GetName().equals(""))
+            if(this.grid[randPos] == null)
             {
                 this.grid[randPos] = new Ant(randPos);
                 --antAmount;
@@ -36,7 +34,7 @@ public class Grid
         {
             Random rand = new Random();
             int randPos = rand.nextInt(this.size);
-            if (this.grid[randPos].GetName().equals(""))
+            if (this.grid[randPos] == null)
             {
                 this.grid[randPos] = new Doodlebug(randPos);
                 --doodleBugAmount;
@@ -52,13 +50,15 @@ public class Grid
         {
             for (int j = 0; j < this.height; j++)
             {
-                if(grid[(this.width * i) + j].GetName().equals("Doodlebug"))
+                if (grid[(this.width * i) + j] != null)
                 {
-                    gridString += "x ";
-                }
-                else if(grid[(this.width * i) + j].GetName().equals("Ant"))
-                {
-                    gridString += "o ";
+                    if (grid[(this.width * i) + j].GetName().equals("Doodlebug"))
+                    {
+                        gridString += "x ";
+                    } else if (grid[(this.width * i) + j].GetName().equals("Ant"))
+                    {
+                        gridString += "o ";
+                    }
                 }
                 else
                 {
@@ -74,22 +74,31 @@ public class Grid
     {
         for(int i = 0; i < this.size; i++)
         {
-            grid[i].ToggleTurn();
-        }
-        for(int index = 0; index < this.size; index++)
-        {
-            if (grid[index].GetName().equals("Doodlebug") &&
-                    !grid[index].GetTurn())
+            if(grid[i] != null)
             {
-                grid[index].simStep(this.grid, this.width);
+                grid[i].ToggleTurn();
             }
         }
         for(int index = 0; index < this.size; index++)
         {
-            if(grid[index].GetName().equals("Ant") &&
-                    !grid[index].GetTurn())
+            if(grid[index] != null)
             {
-                grid[index].simStep(this.grid, this.width);
+                if (grid[index].GetName().equals("Doodlebug") &&
+                        !grid[index].GetTurn())
+                {
+                    grid[index].simStep(this.grid, this.width);
+                }
+            }
+        }
+        for(int index = 0; index < this.size; index++)
+        {
+            if(grid[index] != null)
+            {
+                if (grid[index].GetName().equals("Ant") &&
+                        !grid[index].GetTurn())
+                {
+                    grid[index].simStep(this.grid, this.width);
+                }
             }
         }
 
