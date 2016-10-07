@@ -1,3 +1,5 @@
+package com.chrisaytona;
+
 import java.util.Random;
 import java.util.ArrayList;
 
@@ -60,10 +62,11 @@ public class Ant extends Organism
             Random rand = new Random();
             int randDir = rand.nextInt(directions.size());
             int newIndex = directions.get(randDir);
-            if(grid[newIndex].GetName().equals(""))
+            if(grid[newIndex] == null)
             {
-                grid[this.index] = new Organism();
-                grid[newIndex] = new Ant(newIndex, this.currentStepLife + 1);
+                grid[newIndex] = this;
+                grid[this.index] = null;
+                this.index = newIndex;
                 return;
             }
             directions.remove(randDir);
@@ -97,7 +100,7 @@ public class Ant extends Organism
             Random rand = new Random();
             int randDir = rand.nextInt(directions.size());
             int newIndex = directions.get(randDir);
-            if(grid[newIndex].GetName().equals(""))
+            if(grid[newIndex] == null)
             {
                 grid[newIndex] = new Ant(newIndex);
                 this.currentStepLife = 0;
