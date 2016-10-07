@@ -114,6 +114,7 @@ public class Ant extends Organism
 
     public void simStep(Organism[] grid, int width)
     {
+        this.currentStepLife++;
         this.move(grid,width);
         if (this.currentStepLife == this.stepsToBreed)
         {
