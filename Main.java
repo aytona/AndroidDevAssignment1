@@ -1,3 +1,5 @@
+package com.chrisaytona;
+
 import java.util.Scanner;
 
 public class Main {
@@ -5,7 +7,7 @@ public class Main {
     public static void main(String[] args)
     {
         Scanner scan = new Scanner(System.in);
-	      Grid gridSim = new Grid(20, 20);
+	    Grid gridSim = new Grid(20, 20);
         gridSim.InitGrid(100, 5);
 
         while(true)
