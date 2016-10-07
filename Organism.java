@@ -1,3 +1,5 @@
+package com.chrisaytona;
+
 public class Organism
 {
     private String name;
@@ -26,9 +28,9 @@ public class Organism
 
     public void simStep(Organism[] grid, int width)
     {
-         this.endTurn = true;
+        this.endTurn = true;
     }
-    
+
     public void ToggleTurn()
     {
         this.endTurn = false;
